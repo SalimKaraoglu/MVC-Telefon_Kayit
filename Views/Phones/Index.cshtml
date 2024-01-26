@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<GetPhoneVM>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Telefon Listesi</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Telefon Marka</th>
+                            <th>Telefon Model</th>
+                            <th>Batarya Kapasitesi</th>
+                            <th>Adet</th>
+                            <th>Ekleme Tarihi</th>
+                            <th>Güncelleme Tarihi</th>
+                            <th>Güncelle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var phone in Model)
+                        {
+                            <tr>
+                                <td>@phone.Id</td>
+                                <td>@phone.Brand</td>
+                                <td>@phone.Modelo</td>
+                                <td>@phone.BataryCapasity</td>
+                                <td>@phone.Piece</td>
+                                <td>@phone.CreatedDate</td>
+                               @if (phone.UpdatedDate is not null)
+                                {
+                                    <td>@phone.UpdatedDate</td>
+                                }
+                                else
+                                {
+                                    <td> - </td>
+                                }
+                                <td>
+                                    <a asp-action="UpdatePhone" asp-route-id="@phone.Id">Güncelle</a>
+                                </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@phone.Id">
+                                        Sil
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal-@phone.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Silme Uyarısı</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Silmek istediğinize emin misiniz?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                                    <a asp-action="DeletePhone" asp-route-id="@phone.Id" type="button" class="btn btn-danger">Sil</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-outline-dark d-block" asp-action="CreatePhone">Yeni Telefon Ekle</a>
+            </di>
+        </div>
+    </div>
+</div>

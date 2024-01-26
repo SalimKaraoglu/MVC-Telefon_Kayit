@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Update Phone";
+}
+@model UpdatePhoneDTO
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Telefon Güncelle</h3>
+            </div>
+            <form asp-action="UpdatePhone">
+                <div class="card-body">
+                    <div>
+                        <label asp-for="Brand" class="form-label"></label>
+                        <input asp-for="Brand" class="form-control" />
+                        <span asp-validation-for="Brand" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Modelo" class="form-label"></label>
+                        <input asp-for="Modelo" class="form-control" />
+                        <span asp-validation-for="Modelo" class="text-danger"></span>
+                    </div> <div>
+                        <label asp-for="BataryCapasity" class="form-label"></label>
+                        <input asp-for="BataryCapasity" class="form-control" />
+                        <span asp-validation-for="BataryCapasity" class="text-danger"></span>
+                    </div> <div>
+                        <label asp-for="Piece" class="form-label"></label>
+                        <input asp-for="Piece" class="form-control" />
+                        <span asp-validation-for="Piece" class="text-danger"></span>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center" style="height:50px;">
+                        <a asp-action="Index" class="btn btn-outline-dark">Anasayfa</a>
+                        <button type="submit" class="btn btn-outline-success">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
